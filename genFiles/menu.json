@@ -1,0 +1,214 @@
+{
+    "type": "menu",
+    "menuName": "root",
+    "subMenu": [
+        {    
+            "type": "menu",
+            "menuName": "fileMenu",
+            "label": "File",
+            "underline": 0,
+            "subMenu": [
+                {
+                    "type": "command",
+                    "label": "Open...",
+                    "underline": 0,
+                    "command": "lambda: print('Opening file...')"
+                },
+                {
+                    "type": "command",
+                    "label": "Open Game Boy...",
+                    "underline": 10,
+                    "command": "lambda: print('Opening Game Boy...')"
+                },
+                {
+                    "type": "command",
+                    "label": "Open Game Boy Color...",
+                    "underline": 14,
+                    "command": "lambda: print('Opening Game Boy Color...')"
+                },
+                {
+                    "type": "menu",
+                    "menuName": "recentGamesMenu",
+                    "label": "Open recent",
+                    "underline": 0,
+                    "subMenu": [
+                        {
+                            "type": "command",
+                            "label": "Reset recent list",
+                            "underline": 0,
+                            "command": "lambda: print('')"
+                        },
+                        {
+                            "type": "command",
+                            "label": "Freeze recent list",
+                            "underline": 0,
+                            "command": "lambda: print('')"
+                        },
+                        {
+                            "type": "separator",
+                            "label": ""
+                        },
+                        {
+                            "type": "iterator",
+                            "iterations": 7,
+                            "label": "",
+                            "command": "",
+                            "accelerator": "Ctrl+F"
+                        }
+                    ]
+                },
+                {
+                    "type": "separator",
+                    "label": ""
+                    
+                },
+                {
+                    "type": "menu",
+                    "menuName": "stateLoadMenu",
+                    "label": "Load State",
+                    "subMenu": [
+                        {
+                            "type": "command",
+                            "label": "Most recent",
+                            "underline": 0,
+                            "accelerator": "Ctrl+L",
+                            "command": "lambda: print('Loading most recent save state...')"
+                        },
+                        {
+                            "type": "separator",
+                            "label": ""
+                            
+                        },
+                        {
+                            "type": "command",
+                            "label": "",
+                            "underline": 0,
+                            "command": "lambda: print('')"
+                        }
+                    ]
+                },
+                {
+                    "type": "menu",
+                    "menuName": "stateSaveMenu",
+                    "label": "Save State",
+                    "subMenu": [
+                        {
+                            "type": "command",
+                            "label": "Oldest slot",
+                            "underline": 0,
+                            "accelerator": "Ctrl+S",
+                            "command": "lambda: print('Save to oldest save state slot...')"
+                        },
+                        {
+                            "type": "separator",
+                            "label": ""
+                            
+                        },
+                        {
+                            "type": "command",
+                            "label": "",
+                            "underline": 0,
+                            "command": "lambda: print('')"
+                        }
+                    ]
+                },
+                {
+                    "type": "separator",
+                    "label": ""
+                },
+                {
+                    "type": "command",
+                    "label": "Close",
+                    "underline": 0,
+                    "command": "lambda: print('')"
+                },
+                {
+                    "type": "command",
+                    "label": "Quit",
+                    "underline": 0,
+                    "command": "lambda: sys.exit()"
+                }
+            ]
+        },
+        {
+            "type": "menu",
+            "menuName": "emulationMenu",
+            "label": "Emulation",
+            "underline": 0,
+            "subMenu": [
+                {
+                    "type": "command",
+                    "label": "",
+                    "underline": 0,
+                    "command": "lambda: print('')"
+                },
+                {
+                    "type": "command",
+                    "label": "",
+                    "underline": 0,
+                    "command": "lambda: print('')"
+                }
+            ]
+        },
+        {
+            "type": "menu",
+            "menuName": "optionsMenu",
+            "label": "Options",
+            "underline": 0,
+            "subMenu":[
+                {
+                    "type": "command",
+                    "label": "",
+                    "underline": 0,
+                    "command": "lambda: print('')"
+                },
+                {
+                    "type": "command",
+                    "label": "",
+                    "underline": 0,
+                    "command": "lambda: print('')"
+                }
+            ]
+        },
+        {
+            "type": "menu",
+            "menuName": "toolsMenu",
+            "label": "Tools",
+            "underline": 0,
+            "subMenu":[
+                {
+                    "type": "command",
+                    "label": "",
+                    "underline": 0,
+                    "command": "lambda: print('')"
+                },
+                {
+                    "type": "command",
+                    "label": "",
+                    "underline": 0,
+                    "command": "lambda: print('')"
+                }
+            ]
+        },
+        {
+            "type": "menu",
+            "menuName": "helpMenu",
+            "label": "Help",
+            "underline": 0,
+            "subMenu":[
+                {
+                    "type": "command",
+                    "label": "",
+                    "underline": 0,
+                    "command": "lambda: print('')"
+                },
+                {
+                    "type": "command",
+                    "label": "About",
+                    "underline": 0,
+                    "command": "lambda: print('')"
+                }
+            ]
+        }
+    ]
+}
