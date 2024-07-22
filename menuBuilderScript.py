@@ -23,6 +23,16 @@ root.geometry(f'{WIN_SIZE[0]}x{WIN_SIZE[1]}')
 menuBar = tk.Menu(root)
 root.config(menu=menuBar)
 
+casc1 = tk.Menu(menuBar, tearoff=False)
+menuBar.add_cascade(label = 'Main Cascade', menu = casc1)
+casc1.add_command(label = 'rename menu')
+casc1.add_separator()
+casc1.add_command(label = '+')
+
+casc2 = tk.Menu(menuBar, tearoff=False)
+menuBar.add_cascade(label = '+', menu = casc2)
+
+
 frame = ttk.Frame(root, width=WIN_SIZE[0], height=WIN_SIZE[1])
 frame.pack(fill=tk.BOTH, expand=True)
 
