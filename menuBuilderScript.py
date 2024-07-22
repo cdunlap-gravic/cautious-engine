@@ -1,8 +1,10 @@
 #####################################
 #
-#
-#
-#
+# 1st: testing if a push from vscode works
+# 2nd: need to just flesh out base code
+# 3rd, can rework the code later properly, but for now
+# lets just work on the base logic on how to generate the 
+# menu bar from within itself and go from there
 #
 #####################################
 
