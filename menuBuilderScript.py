@@ -5,7 +5,7 @@
 # 3rd, can rework the code later properly, but for now
 # lets just work on the base logic on how to generate the 
 # menu bar from within itself and go from there
-#
+# TEST EDIT ON CB
 #####################################
 
 import tkinter as tk 
