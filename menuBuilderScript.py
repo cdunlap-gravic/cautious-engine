@@ -1,19 +1,30 @@
 #####################################
 #
-# 1st: testing if a push from vscode works
-# 2nd: need to just flesh out base code
-# 3rd, can rework the code later properly, but for now
-# lets just work on the base logic on how to generate the 
-# menu bar from within itself and go from there
-# TEST EDIT ON CB
-# test edit 2
+# TODO: Build the prototype NOW
+#    - Doesn't have to be good code, just needs to work
+#    GOALS:
+#      - Menu bar that has buttons to add sections
+#      - each cascade has separate items at the top than can be used for formatting the head
+#      - "compile" button that saves changes and gets you out of building mode (kills the plus buttons and other stuff)
+# 
 #####################################
 
 import tkinter as tk 
 from tkinter import ttk
 from ttkthemes import ThemedTk
 
+def renameMenu(menu):
+    #open rename popup field
+    #set new name
+    #rebuild menu
+    #These menu objects are probably critical to this whole menubuilding
+    return
 
+def addCommand():
+    return
+
+def addMenu():
+    return
 WIN_TITLE = 'Test Script - MenuBar Generation Test 001'
 WIN_SIZE = (800, 600)
 jsonFile = "./genFiles/menu.json"
