@@ -44,7 +44,15 @@ class menuGroup:
     once to calculate underlines etc
     second to actually build the json file
     (I don't want to have the first instance of 'Open X type file' to have 'Open' underlined, but the X, or the next letter of it, so I need to catalog the names of all commands and parse them out before fully generating the json file)
-    
+
+    underline creation:
+        walk through main menus
+            add each label to list
+        GOT THE LIST
+        parse the list
+            assign underline value to unique letter in that SET
+            underline values only have to be unique to the menu set, not including submenus.
+            
     
     walk through main menu object
         walk through children objects
