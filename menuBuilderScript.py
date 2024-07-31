@@ -23,8 +23,28 @@ def renameMenu(menu):
 def addCommand():
     return
 
+#can use a pop up with a radio button for what kind of object to add
 def addMenu():
-    return
+    new_window = tk.Toplevel(root)
+    new_window.title("New Menu Name?")
+    
+    def submit_text():
+        text_input = text_entry.get()
+        #ADD CASCASE HERE
+        #MMMMMMMMMMMMACTUALLY this SHOULD just affect the objects, and let the menubuilder
+        # reprocess menu generation over and over again. 
+        print(text_input)
+        new_window.destroy()
+    
+    text_label = tk.Label(new_window, text='Enter text:')    
+    text_label.pack()
+    
+    text_entry = tk.Entry(new_window)
+    text_entry.pack()
+    
+    submit_button = tk.Button(new_window, text='letsdoit', command=submit_text)
+    submit_button.pack()
+    
 WIN_TITLE = 'Test Script - MenuBar Generation Test 001'
 WIN_SIZE = (800, 600)
 jsonFile = "./genFiles/menu.json"
@@ -36,12 +56,17 @@ menuBar = tk.Menu(root)
 root.config(menu=menuBar)
 
 casc1 = tk.Menu(menuBar, tearoff=False)
-menuBar.add_cascade(label = 'Main Cascade', menu = casc1)
+menuBar.add_cascade(label = '[Rename Me!]', menu = casc1)
 casc1.add_command(label = 'rename menu')
 casc1.add_separator()
-casc1.add_command(label = '+')
+# This should open up a popup with fields for name and command selection/write in field
+# and any other tags, ie font or quick commands
+casc1.add_command(label = '+', command=lambda:addMenu())
+
 
 casc2 = tk.Menu(menuBar, tearoff=False)
+# THIS ONE should add to the root menu obj
+# I don't know if I can add a command here????
 menuBar.add_cascade(label = '+', menu = casc2)
 
 

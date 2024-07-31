@@ -1,43 +1,29 @@
 import tkinter as tk
 
-def rename_menu(parent_menu):
-    global popup
-    def rename_callback():
-        new_name = entry.get()
-        parent_menu.entryconfig(0, label=new_name)
-        popup.destroy()
+def open_new_window(event):
+    new_window = tk.Toplevel(root)
+    new_window.title("Enter Text")
 
-    popup = tk.Toplevel()
-    popup.title("Rename Menu")
+    def submit_text():
+        text_input = text_entry.get()
+        # Do something with the text input
+        print(text_input)
+        new_window.destroy()
 
-    label = tk.Label(popup, text="Enter new name:")
-    label.pack()
+    text_label = tk.Label(new_window, text="Enter text:")
+    text_label.pack()
+ 
+    text_entry = tk.Entry(new_window)
+    text_entry.pack()
 
-    entry = tk.Entry(popup)
-    entry.pack()
-
-    rename_button = tk.Button(popup, text="Rename", command=rename_callback)
-    rename_button.pack()
-
-def on_right_click(event):
-    popup.post(event.x_root, event.y_root)
+    submit_button = tk.Button(new_window, text="Submit", command=submit_text)
+    submit_button.pack()
 
 root = tk.Tk()
+root.title("Main Window")
 
-menu = tk.Menu(root)
-root.config(menu=menu)
-
-file_menu = tk.Menu(menu, tearoff=0)
-menu.add_cascade(label="File", menu=file_menu)
-
-file_menu.add_command(label="Open") 
-
-file_menu.add_command(label="Save")
-
-file_menu.add_separator()
-file_menu.add_command(label="Rename", 
- command=lambda:rename_menu(file_menu))
-
-file_menu.bind("<Button-3>", on_right_click)
+button = tk.Button(root, text="Open New Window")
+button.bind("<Button-1>", open_new_window)
+button.pack()
 
 root.mainloop()

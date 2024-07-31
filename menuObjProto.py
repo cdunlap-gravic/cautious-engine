@@ -45,6 +45,51 @@ class menuGroup:
     second to actually build the json file
     (I don't want to have the first instance of 'Open X type file' to have 'Open' underlined, but the X, or the next letter of it, so I need to catalog the names of all commands and parse them out before fully generating the json file)
 
+########
+##########
+if the menu object has a groups field, it is of type "menu"
+
+
+ok what do I actually need to get done here?
+I need to have a menu object that can hold the info of THAT json file over there  ----------> 
+
+these objects should have all that info, and THEN, I populate the underlines through total picture analysis
+
+from enum import StrEnum
+class menuType(StrEnum):
+    MENU = "MENU"
+    COMMAND = "COMMAND"
+    ITERATOR = "ITERATOR"
+    
+class menuObj:
+    
+    def __init__(self, menu_type: menuType):
+        self.menu_type = menu_type
+        self.tags = []
+    
+    # SETTERS
+    def set_menu_type(self, menu_type: menuType):
+        self.menu_type = menu_type
+    
+    def add_tag(self, dict)
+    # GETTERS    
+    def get_menu_type(self):
+        return self.menu_type
+    
+    def get_tags(self):
+        return self.tags
+        
+    # OTHER FUNCS
+    def processUnderlines(self):
+        return
+        
+
+##########
+########
+
+
+
+
     underline creation:
         walk through main menus
             add each label to list

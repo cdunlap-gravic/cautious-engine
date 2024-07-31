@@ -11,9 +11,9 @@ import sdl2.sdlimage
 import pyboy
 # Global variables
 
-WIN_TITLE = 'Test Script - Tkinter integration, Frame Resize'
+WIN_TITLE = 'Test Script - Menu Builder layout'
 WIN_SIZE = (800, 600)
-jsonFile = "./genFiles/menu.json"
+jsonFile = "./genFiles/sketch.json"
 root = ThemedTk(theme='black')
 root.title(WIN_TITLE)
 root.geometry(f'{WIN_SIZE[0]}x{WIN_SIZE[1]}')
