@@ -10,15 +10,15 @@
             "subMenu": [
                 {
                     "type": "command",
-                    "label": "Rename Menu",
-                    "background": "#3399ff",
+                    "label": "[Edit Cascade]",
+                    "background": "#FFCC66",
                     "underline": 0,
                     "command": "lambda: print('Opening file...')"
                 },
                 {
                     "type": "command",
-                    "label": "Delete Menu",
-                    "background": "#3399ff",
+                    "label": "[Delete Cascade]",
+                    "background": "#FF6666",
                     "underline": 0,
                     "command": "lambda: print('Opening file...')"
                 },
@@ -28,8 +28,8 @@
                 },
                 {
                     "type": "command",
-                    "label": "Command Group:",
-                    "background": "#3399ff",
+                    "label": "[Edit Menu Group]",
+                    "background": "#FFCC66",
                     "underline": 0,
                     "command": "lambda: print('Opening file...')"
                 },
@@ -46,11 +46,77 @@
                     "command": "lambda: print('Opening file...')"
                 },
                 {
+                    "type": "separator",
+                    "label": ""
+                },
+                {
                     "type": "command",
-                    "label": "Add menu obj",
-                    "background": "#3399ff",
+                    "label": "[Edit Menu Group]",
+                    "background": "#FFCC66",
                     "underline": 0,
                     "command": "lambda: print('Opening file...')"
+                },
+                {
+                    "type": "command",
+                    "label": "Auto Save",
+                    "underline": 0,
+                    "command": "lambda: print('Opening file...')"
+                },
+                {
+                    "type": "menu",
+                    "menuName": "prefMenu",
+                    "label": "Preferences",
+                    "underline": 0,
+                    "subMenu": [
+                        {
+                            "type": "command",
+                            "label": "[Edit Cascade]",
+                            "background": "#FFCC66",
+                            "underline": 0,
+                            "command": "lambda: print('Opening file...')"
+                        },
+                        {
+                            "type": "command",
+                            "label": "[Delete Cascade]",
+                            "background": "#FF6666",
+                            "underline": 0,
+                            "command": "lambda: print('Opening file...')"
+                        },
+                        {
+                            "type": "separator",
+                            "label": ""
+                        },
+                        {
+                            "type": "command",
+                            "label": "[Edit Menu Group]",
+                            "background": "#FFCC66",
+                            "underline": 0,
+                            "command": "lambda: print('Opening file...')"
+                        },
+                        {
+                            "type": "command",
+                            "label": "Settings",
+                            "underline": 0,
+                            "command": "lambda: print('Opening file...')"
+                        },
+                        {
+                            "type": "command",
+                            "label": "Themes",
+                            "underline": 0,
+                            "command": "lambda: print('Opening file...')"
+                        },
+                        {
+                            "type": "separator",
+                            "label": ""
+                        },
+                        {
+                            "type": "command",
+                            "label": "[Add Group]",
+                            "background": "#66ff66",
+                            "underline": 0,
+                            "command": "lambda: print('Opening file...')"
+                        }
+                    ]
                 },
                 {
                     "type": "separator",
@@ -58,8 +124,8 @@
                 },
                 {
                     "type": "command",
-                    "label": "Add Group",
-                    "background": "#3399ff",
+                    "label": "[Add Group]",
+                    "background": "#66ff66",
                     "underline": 0,
                     "command": "lambda: print('Opening file...')"
                 }
@@ -73,8 +139,8 @@
             "subMenu": [
                 {
                     "type": "command",
-                    "label": "Add Menu",
-                    "background": "#3399ff",
+                    "label": "[Add Cascade]",
+                    "background": "#66ff66",
                     "underline": 0,
                     "command": "lambda: print('Opening file...')"
                 }
