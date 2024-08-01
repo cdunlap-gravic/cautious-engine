@@ -11,12 +11,14 @@
                 {
                     "type": "command",
                     "label": "Rename Menu",
+                    "background": "#3399ff",
                     "underline": 0,
                     "command": "lambda: print('Opening file...')"
                 },
                 {
                     "type": "command",
                     "label": "Delete Menu",
+                    "background": "#3399ff",
                     "underline": 0,
                     "command": "lambda: print('Opening file...')"
                 },
@@ -27,6 +29,7 @@
                 {
                     "type": "command",
                     "label": "Command Group:",
+                    "background": "#3399ff",
                     "underline": 0,
                     "command": "lambda: print('Opening file...')"
                 },
@@ -45,6 +48,7 @@
                 {
                     "type": "command",
                     "label": "Add menu obj",
+                    "background": "#3399ff",
                     "underline": 0,
                     "command": "lambda: print('Opening file...')"
                 },
@@ -55,6 +59,7 @@
                 {
                     "type": "command",
                     "label": "Add Group",
+                    "background": "#3399ff",
                     "underline": 0,
                     "command": "lambda: print('Opening file...')"
                 }
@@ -69,6 +74,7 @@
                 {
                     "type": "command",
                     "label": "Add Menu",
+                    "background": "#3399ff",
                     "underline": 0,
                     "command": "lambda: print('Opening file...')"
                 }
