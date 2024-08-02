@@ -1,16 +1,16 @@
-
 import modules.menuFromJson as MJ
 import tkinter as tk 
 from tkinter import ttk
 from ttkthemes import ThemedTk
 from threading import Thread
+import testscripts.geminihelpme as gem
 
 import sdl2
 import sdl2.ext
 import sdl2.sdlimage
 import pyboy
-# Global variables
 
+# Global variables
 WIN_TITLE = 'Test Script - Menu Builder layout'
 WIN_SIZE = (800, 600)
 jsonFile = "./genFiles/sketch.json"
@@ -20,7 +20,7 @@ root.geometry(f'{WIN_SIZE[0]}x{WIN_SIZE[1]}')
 
 menuBar = tk.Menu(root)
 root.config(menu=menuBar)
-MJ.loadMenuFromJson(jsonFile, menuBar)
+MJ.loadMenuFromJson(jsonFile, menuBar, root)
 
 frame = ttk.Frame(root, width=WIN_SIZE[0], height=WIN_SIZE[1])
 frame.pack(fill=tk.BOTH, expand=True)

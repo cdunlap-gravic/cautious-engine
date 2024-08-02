@@ -13,7 +13,7 @@
                     "label": "[Edit Cascade]",
                     "background": "#FFCC66",
                     "underline": 0,
-                    "command": "lambda: print('Opening file...')"
+                    "command": "lambda: gem.open_new_window(root)"
                 },
                 {
                     "type": "command",

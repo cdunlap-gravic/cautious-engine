@@ -1,8 +1,23 @@
 import tkinter as tk
 
-def open_new_window():
-    new_window = tk.Toplevel()
-    new_window.title("New Window")
+def open_new_window(rootMenu):
+    new_window = tk.Toplevel(rootMenu)
+    new_window.title("Enter Text")
+
+    def submit_text():
+        text_input = text_entry.get()
+        # Do something with the text input
+        print(text_input)
+        new_window.destroy()
+
+    text_label = tk.Label(new_window, text="Enter text:")
+    text_label.pack()
+ 
+    text_entry = tk.Entry(new_window)
+    text_entry.pack()
+
+    submit_button = tk.Button(new_window, text="Submit", command=submit_text)
+    submit_button.pack()
     # Add content to the new window here
 
 def main():
@@ -12,32 +27,10 @@ def main():
     menu_bar = tk.Menu(root)
     root.config(menu=menu_bar)
 
-    file_menu = tk.Menu(menu_bar, tearoff=0)
-    menu_bar.add_cascade(label="File", menu=file_menu)
-
-    file_menu.add_command(label="Open")
-    file_menu.add_command(label="Save")
-
-
-    edit_menu = tk.Menu(menu_bar, tearoff=0)
-    menu_bar.add_cascade(label="Edit", menu=edit_menu)
-    edit_menu.add_command(label="Cut")
-    edit_menu.add_command(label="Copy")
-    edit_menu.add_command(label="Paste")
-
-
-    tools_menu = tk.Menu(menu_bar, tearoff=0)
-    menu_bar.add_cascade(label="Tools", menu=tools_menu)
-    tools_menu.add_command(label="Options")
-    tools_menu.add_command(label="Customize")
-
-    help_menu = tk.Menu(menu_bar, tearoff=0)
-    menu_bar.add_cascade(label="Help", menu=help_menu)
-    help_menu.add_command(label="About")
 
     view_menu = tk.Menu(menu_bar, tearoff=0)
     menu_bar.add_cascade(label="View", menu=view_menu)
-    view_menu.add_command(label="New Window", command=open_new_window)
+    view_menu.add_command(label="New Window", command=lambda: open_new_window(root))
 
     root.mainloop()
 
