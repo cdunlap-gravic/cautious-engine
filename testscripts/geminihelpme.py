@@ -1,5 +1,18 @@
 import tkinter as tk
 
+
+
+####################
+# TECHINCALLY, this script is ready to write out more window
+# generation commands. Let's try adding a few different 
+# types of windows and tag them to different buttons in the
+# draft json file (sketch.json)
+#
+# Let's also move out of this test script and actually make 
+# a menus script
+# THERE WE GO, this can sit as a test script now
+####################
+
 def open_new_window(rootMenu):
     new_window = tk.Toplevel(rootMenu)
     new_window.title("Enter Text")
