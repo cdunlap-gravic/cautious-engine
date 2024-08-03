@@ -20,7 +20,7 @@
                     "label": "[Delete Cascade]",
                     "background": "#FF6666",
                     "underline": 0,
-                    "command": "lambda: print('Opening file...')"
+                    "command": "lambda: MBM.baseWindow(root)"
                 },
                 {
                     "type": "separator",
