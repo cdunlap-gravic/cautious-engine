@@ -11,6 +11,11 @@ import tkinter as tk
 # Let's also move out of this test script and actually make 
 # a menus script
 # THERE WE GO, this can sit as a test script now
+#
+# 8/5/24
+# Apparently I already phased out this test script, so I can 
+# fully retire it to the depths of hell and delete it on the
+# next big commit. Gonna keep it around for today though JIC.
 ####################
 
 def open_new_window(rootMenu):
