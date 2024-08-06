@@ -20,7 +20,7 @@
                     "label": "[Delete Cascade]",
                     "background": "#FF6666",
                     "underline": 0,
-                    "command": "lambda: MBM.deleteCasc(root)"
+                    "command": "lambda: MBM.SubmitWin(root)"
                 },
                 {
                     "type": "separator",
