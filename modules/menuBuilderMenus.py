@@ -1,23 +1,33 @@
 import tkinter as tk
 from tkinter import messagebox
 
-class BaseMenu(object):
-    def __init__(self):
+class _BaseMenu(object):
+    # Why do I need to intiallize anything? maybe a base resolution based on screen size? MAYBE? 
+    # Techincally you should NEVER see the title 'Title' anywhere
+    # NEED TO RESTRUCTURE THIS AS AN ABC
+    def __init__(self): #pass
         self.title = 'Title'
         self.root_menu = None
         
-    def openNewWindow(self, root, title):
-        new_window = tk.Toplevel(self.root_menu)
-        new_window.title(self.title)
+    def openWindow(self):
+        self.window = tk.Toplevel(self.root_menu)
+        self.window.title(self.title)
+        
+    def closeWindow(self):
+        self.window.destroy()
     
 
-class EditCascade(BaseMenu):
+class EditCascade(_BaseMenu):
     def __init__(self, root):
         self.title = 'Edit Cascade'
         self.root_menu = root
-        super().openNewWindow(self.root_menu, self.title)
+        super().openWindow()
+        
+        text_label = tk.Label(self.window, text='test label')
+        text_label.pack()
         # I think I'm getting too convoluted and confusing myself... should take a step back with this but I think I'm on the right track. I just need to decide WHERE I want to call/initialize values and where I want to put my functions, either in the child or in the parent. I think this last line is correct though. 
         #### STOPPED HERE FOR VIV1 TMF MAINTENANCE #####
+        # ok, each child object should define its own title and root could be assumed. But the question is do I want to build these menus out of a gui builder too? Or should I just design it by hand anyway? For now, let's just focus on building the menubar builder, and any subsequent windows should be "hardcoded" to the degree of good coding, but not fully futureproofed. radio switches should be dynamic in design, but layout can be programed on a scalability factor and dynamic in number of spaces in the grid can be dynamic, but this feature doesn't have to come from a parent object. If I need that level of detail, I can work on that LATER as a future feature, and work towards building that as a possible design feature now, but not implement it 
 
 
 def open_new_window(rootMenu):

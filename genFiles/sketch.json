@@ -13,7 +13,7 @@
                     "label": "[Edit Cascade]",
                     "background": "#FFCC66",
                     "underline": 0,
-                    "command": "lambda: MBM.open_new_window(root)"
+                    "command": "lambda: MBM.EditCascade(root)"
                 },
                 {
                     "type": "command",
