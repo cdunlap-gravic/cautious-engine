@@ -1,8 +1,58 @@
 from enum import Enum
+from abc import ABC, abstractmethod
 
 
+class MenuType(Enum):
+    MENU = 'menu'
+    COMD = 'command'
+    ITER = 'iterator'
+    SEPR = 'separator'
+
+class MenuTags(Enum):
+    #Maybe enums aren't the best way to go with so many tags?
+    ACCEL = 'accelerator'
+    ACTVBG = 'activebackground'
+    ACTVFG = 'activeforeground'
+    BG = 'background'
+    FG = 'foreground'
+    BMP = 'bitmap'
+    COLBRK = 'columnbreak'
+    CMD = 'command'
+    COMP = 'compound'
+    FONT = 'font'
+    HDMRG = 'hidemargin'
+    IMG = 'image'
+    LBL = 'label'
+    MENU = 'menu'
+    ONVAL = 'onvalue'
+    OFFVAL = 'offvalue'
+    SELCLR = 'selectcolor'
+    SELIMG = 'selectimage'
+    STATE = 'state'
+    UNDRL = 'underline'
+    VAL = 'value'
+    VAR = 'variable'
+   
+class MenuObj:
+    def __init__(self) -> None:
+        # When an object is instantiated, what needs to exist? Lists need to exist, and variables should
+        # probably exist. I'll also need setters and getters.
+        # I'll also need to somehow convert these objects into my json objects, and vice versa.
+        # All those tags need to go somewhere too. They *can* go into a dict like the json, but
+        # I want some amount of validation. But I also don't want to set 100 parameters that aren't
+        # touched by half the objects. Perhaps setting up an Enum with all of the tags would work?
+        # then I can validate if the list dict even has valid keys. 
+        # I can also use enums for the type key values, to validate the menu types
+        # and in doing all of THIS, I'll be able to document and possibly dynamically set the enums based
+        # on what actually is handled by MFJ.py. I can also have THAT list be generated in another module
+        # [{x:x,...,x:[{x:x,...,x:x},...,{x:x,...,x:x}]},...,{x:x,...,x:x}] 
+        #
+        self.blank = None
+        pass
     
-class menuObj:
+class OLDmenuObj:
+    # technically I should never have this object instantiated directly. Let's turn this into an ABC
+    # actually, maybe not. I would insntatiated these
     def __init__(self):
         self._thing = None
         self.tags = []
