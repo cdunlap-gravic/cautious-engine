@@ -1,7 +1,3 @@
-from enum import Enum
-from abc import ABC, abstractmethod
-
-# Yeah, lets go with sets instead of enums. I never needed the key:value pairing style in enums/dicts
 
 # THIS STUFF IS MORE FOR VALIDATION TESTING BEFORE RUNNING MFJ.PY, BUT CAN ALSO BE USED TO LIST/VALIDATE OPTIONS IN MBMs. This architecture could also be used for the lic builder, listing all the options. I should probably consider  building a configuration set file to load these from, and/or a table
 menu_types = {'menu', 'command', 'iterator', 'separator'}
@@ -17,18 +13,9 @@ currently_known_not_supported = {'font'}
 # I WILL need a way to validate that the KEYS in menu.json either match tkinter_args OR matches my KEYS
 class MenuObj:
     def __init__(self, type, **kwargs) -> None:
-        # When an object is instantiated, what needs to exist? Lists need to exist, and variables should
-        # probably exist. I'll also need setters and getters.
-        # I'll also need to somehow convert these objects into my json objects, and vice versa.
-        # All those tags need to go somewhere too. They *can* go into a dict like the json, but
-        # I want some amount of validation. But I also don't want to set 100 parameters that aren't
-        # touched by half the objects. Perhaps setting up an Enum with all of the tags would work?
-        # then I can validate if the list dict even has valid keys. 
-        # I can also use enums for the type key values, to validate the menu types
-        # and in doing all of THIS, I'll be able to document and possibly dynamically set the enums based
-        # on what actually is handled by MFJ.py. I can also have THAT list be generated in another module
-        # [{x:x,...,x:[{x:x,...,x:x},...,{x:x,...,x:x}]},...,{x:x,...,x:x}] 
-        #
+        # TODO I need setters and getters.
+        # I'll also need to somehow convert these objects into my json objects, and vice versa. NOTE working on that
+        # through the MenuObj/MenuGroup object relationship
         self.type = type
         self.tags = {k: v for k, v in kwargs.items() if k != 'subMenu'}
         self.subMenu = kwargs.get('subMenu', []) # this will be a list of dicts
@@ -38,61 +25,39 @@ class MenuObj:
         # within self.tags
         pass
     
-#WILL ALSO NEED A SET OF MENU OBJECTS FOR EACH CASCADE, AND ADD THEM TOGETHER
-# I WILL have an unknown number of menu groups, therefore, I  cannot make them just one static list. This needs
-# to be an object, albiet a small one.
+
+#topmost item will be a MenuObj named root, and it will have a submenu which will comprise of a list of
+# menu groups. Each menu group will have menu objs, which could own a list of menu groups (menu groups are
+# lists of menu objects) At no point will a menu group have a list of menu groups. There WILL be a parent menu
+# object to hold menu groups, otherwise there will be no labels etc
+
 class MenuGroup:
     def __init__(self, name=None) -> None:
+        self.name = name
         self.menu_objects = []
         
     def add_menu_object(self, menu_object):
         self.menu_objects.append(menu_object)
-        #why does this have to be an object???? I could add more functions to it, but I could also just
-        # set a plain function in this script that can manipulate this "object" that really should be a set
-        # OH WAIT, I do need multiple menu groups, and they should have a set order. So they should be 
-        # in an array of sorts?
-        
-        
-        
-        
-class OLDmenuObj:
-    # technically I should never have this object instantiated directly. Let's turn this into an ABC
-    # actually, maybe not. I would insntatiated these
-    def __init__(self):
-        self._thing = None
-        self.tags = []
-        self.type = Enum('MenuType', ['menu','command','iterator','separator'])
-        self.underline = None
-        self.groups = []
+
+    #TODO rearange functions
     
-    def addGroup(group):
-        groups = []
-        
-        """
-        or do I want these tags in a dict list?
-        I should probably keep the tags in a dict list so I can use the same navigation logic, AND so that this is able to store commands and menus.
-        
-        Key issue here is I need to organize things in groups.
-        A set of groups will make up a single cascade
-        and separators will be defined between groups.
-        
-        underlines are defined after all commands/submenus are orgainzed and will follow certain rules
-        
-        first letter of first word, if first word is common, first of second for those groups of words, and if need be, shift letters.
-        
-        CERTAIN WORDS have priority, ie Close, Exit, etc
-        
-        this tool is here to FIX the man made decisions of underlines, and adding separators
-        
-        AFTER THIS WHOLE SCRIPT IS DONE BUILDING THE OBJECTS, we push and write it to a json file.
-        """
+    #TODO drop functions
     
-class menuGroup:
-    def __init__(self):
-        self.members = []
-        
-        
+    #TODO rename objects functions
+    
+    
+            
 """
+    underlines are defined after all commands/submenus are orgainzed and will follow certain rules
+    
+    first letter of first word, if first word is common, first of second for those groups of words, and if need be, shift letters.
+    
+    CERTAIN WORDS have priority, ie Close, Exit, etc
+    
+    this tool is here to FIX the man made decisions of underlines, and adding separators
+    
+    AFTER THIS WHOLE SCRIPT IS DONE BUILDING THE OBJECTS, we push and write it to a json file.
+###########
     Let's work backwards with the process and we'll be able to figure out what is needed from that:
     
     WILL HAVE TO WALK THROUGH EVERYTHING TWICE
@@ -104,47 +69,15 @@ class menuGroup:
 ##########
 if the menu object has a groups field, it is of type "menu"
 
-
 ok what do I actually need to get done here?
 I need to have a menu object that can hold the info of THAT json file over there  ----------> 
 
 these objects should have all that info, and THEN, I populate the underlines through total picture analysis
-
-from enum import StrEnum
-class menuType(StrEnum):
-    MENU = "MENU"
-    COMMAND = "COMMAND"
-    ITERATOR = "ITERATOR"
-    
-class menuObj:
-    
-    def __init__(self, menu_type: menuType):
-        self.menu_type = menu_type
-        self.tags = []
-    
-    # SETTERS
-    def set_menu_type(self, menu_type: menuType):
-        self.menu_type = menu_type
-    
-    def add_tag(self, dict)
-    # GETTERS    
-    def get_menu_type(self):
-        return self.menu_type
-    
-    def get_tags(self):
-        return self.tags
-        
     # OTHER FUNCS
     def processUnderlines(self):
-        return
-        
-
+        return 
 ##########
 ########
-
-
-
-
     underline creation:
         walk through main menus
             add each label to list
@@ -166,8 +99,4 @@ class menuObj:
         add first child (file menu)
         add cascade
     convert all to json
-
-
-
-
 """
