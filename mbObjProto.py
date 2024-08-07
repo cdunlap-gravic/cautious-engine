@@ -1,40 +1,22 @@
 from enum import Enum
 from abc import ABC, abstractmethod
 
+# Yeah, lets go with sets instead of enums. I never needed the key:value pairing style in enums/dicts
 
-class MenuType(Enum):
-    MENU = 'menu'
-    COMD = 'command'
-    ITER = 'iterator'
-    SEPR = 'separator'
+# THIS STUFF IS MORE FOR VALIDATION TESTING BEFORE RUNNING MFJ.PY, BUT CAN ALSO BE USED TO LIST/VALIDATE OPTIONS IN MBMs. This architecture could also be used for the lic builder, listing all the options. I should probably consider  building a configuration set file to load these from, and/or a table
+menu_types = {'menu', 'command', 'iterator', 'separator'}
 
-class MenuTags(Enum):
-    #Maybe enums aren't the best way to go with so many tags?
-    ACCEL = 'accelerator'
-    ACTVBG = 'activebackground'
-    ACTVFG = 'activeforeground'
-    BG = 'background'
-    FG = 'foreground'
-    BMP = 'bitmap'
-    COLBRK = 'columnbreak'
-    CMD = 'command'
-    COMP = 'compound'
-    FONT = 'font'
-    HDMRG = 'hidemargin'
-    IMG = 'image'
-    LBL = 'label'
-    MENU = 'menu'
-    ONVAL = 'onvalue'
-    OFFVAL = 'offvalue'
-    SELCLR = 'selectcolor'
-    SELIMG = 'selectimage'
-    STATE = 'state'
-    UNDRL = 'underline'
-    VAL = 'value'
-    VAR = 'variable'
-   
+tkinter_args = {'accelerator', 'activebackground', 'activeforeground', 'background', 'bitmap', 'columnbreak', 'command', 'compound', 'font', 'foreground', 'hidemargin', 'image', 'label', 'menu', 'offvalue', 'onvalue', 'selectcolor', 'selectimage', 'state', 'underline', 'value', 'variable'}
+
+my_keys = {'type', 'menuName', 'subMenu'}
+
+currently_known_not_supported = {'font'}
+# I probably should get these from a written file
+
+
+# I WILL need a way to validate that the KEYS in menu.json either match tkinter_args OR matches my KEYS
 class MenuObj:
-    def __init__(self) -> None:
+    def __init__(self, type, **kwargs) -> None:
         # When an object is instantiated, what needs to exist? Lists need to exist, and variables should
         # probably exist. I'll also need setters and getters.
         # I'll also need to somehow convert these objects into my json objects, and vice versa.
@@ -47,9 +29,32 @@ class MenuObj:
         # on what actually is handled by MFJ.py. I can also have THAT list be generated in another module
         # [{x:x,...,x:[{x:x,...,x:x},...,{x:x,...,x:x}]},...,{x:x,...,x:x}] 
         #
-        self.blank = None
+        self.type = type
+        self.tags = {k: v for k, v in kwargs.items() if k != 'subMenu'}
+        self.subMenu = kwargs.get('subMenu', []) # this will be a list of dicts
+    
+    def set_tag(self, tag: dict):
+        #This function needs to take some sort of argument, validate that it is an acccepted arg, and then set the tag
+        # within self.tags
         pass
     
+#WILL ALSO NEED A SET OF MENU OBJECTS FOR EACH CASCADE, AND ADD THEM TOGETHER
+# I WILL have an unknown number of menu groups, therefore, I  cannot make them just one static list. This needs
+# to be an object, albiet a small one.
+class MenuGroup:
+    def __init__(self, name=None) -> None:
+        self.menu_objects = []
+        
+    def add_menu_object(self, menu_object):
+        self.menu_objects.append(menu_object)
+        #why does this have to be an object???? I could add more functions to it, but I could also just
+        # set a plain function in this script that can manipulate this "object" that really should be a set
+        # OH WAIT, I do need multiple menu groups, and they should have a set order. So they should be 
+        # in an array of sorts?
+        
+        
+        
+        
 class OLDmenuObj:
     # technically I should never have this object instantiated directly. Let's turn this into an ABC
     # actually, maybe not. I would insntatiated these
