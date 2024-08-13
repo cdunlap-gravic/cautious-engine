@@ -29,6 +29,8 @@
 
 
 # THIS STUFF IS MORE FOR VALIDATION TESTING BEFORE RUNNING MFJ.PY, BUT CAN ALSO BE USED TO LIST/VALIDATE OPTIONS IN MBMs. This architecture could also be used for the lic builder, listing all the options. I should probably consider  building a configuration set file to load these from, and/or a table
+
+crashed = False
 my_keys = frozenset({'type', 'menuName', 'subMenu'})
 menu_types = frozenset({'menu', 'command', 'iterator', 'separator'})
 tkinter_args = frozenset({'accelerator', 'activebackground', 'activeforeground', 'background', 'bitmap', 'columnbreak', 'command', 'compound', 'font', 'foreground', 'hidemargin', 'image', 'label', 'menu', 'offvalue', 'onvalue', 'selectcolor', 'selectimage', 'state', 'underline', 'value', 'variable'})
@@ -290,7 +292,27 @@ rootMenu = MenuObj(
                                     type="menu",
                                     menuName="subgroup",
                                     subMenu=[
+                                        MenuObj( 
+                                            type="command",
+                                            label="[Edit Cascade]",
+                                            background="#FFCC66",
+                                            underline= 0,
+                                            command="lambda: MBM.EditCascade(root)"
+                                        ),
                                         MenuObj(
+                                            type="command",
+                                            label="[Delete Cascade]",
+                                            background="#FF6666",
+                                            underline=0,
+                                            command="lambda: MBM.SubmitWin(root)"
+                                        )
+                                    ]
+                                ),
+                                MenuObj(
+                                    type="menu",
+                                    menuName="subgroup",
+                                    subMenu=[
+                                        MenuObj( 
                                             type="command",
                                             label="[Edit Menu Group]",
                                             background="#FFCC66",
@@ -299,20 +321,46 @@ rootMenu = MenuObj(
                                         ),
                                         MenuObj(
                                             type= "command",
-                                            label= "Open...",
+                                            label= "Settings",
                                             underline= 0,
                                             command= "lambda: print('Opening file...')"
                                         ),
                                         MenuObj(
                                             type= "command",
-                                            label= "Save As...",
+                                            label= "Themes",
                                             underline= 0,
                                             command= "lambda: print('Opening file...')"
+                                        )
+                                    ]
+                                ),
+                                MenuObj(
+                                    type="menu",
+                                    menuName="subgroup",
+                                    subMenu=[
+                                        MenuObj(
+                                            type="command",
+                                            label="[Add Group]",
+                                            background="#66ff66",
+                                            underline= 0,
+                                            command="lambda: print('Opening file...')"
                                         )
                                     ]
                                 )          
                             ]
                         )          
+                    ]
+                ),
+                MenuObj(
+                    type="menu",
+                    menuName="subgroup",
+                    subMenu=[
+                        MenuObj(
+                            type="command",
+                            label="[Add Group]",
+                            background="#66ff66",
+                            underline= 0,
+                            command="lambda: print('Opening file...')"
+                        )
                     ]
                 )
             ]
@@ -337,4 +385,9 @@ rootMenu = MenuObj(
 )
 
 print(rootMenu.subMenu[0].subMenu[1].tags)
-print('test')
+
+if not crashed:
+    cr='DID NOT CRASH! YAY!'
+else:
+    cr='Utter Failure. How did you get this message to print anyway???!!!!'
+print(f"""Crash Test Result: {cr}""")
