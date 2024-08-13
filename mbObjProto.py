@@ -250,7 +250,7 @@ rootMenu = MenuObj(
                             label="[Edit Menu Group]",
                             background="#FFCC66",
                             underline= 0,
-                            command="lambda: MBM.EditCascade(root)"
+                            command="lambda: print('Opening file...')"
                         ),
                         MenuObj(
                             type= "command",
@@ -285,6 +285,7 @@ rootMenu = MenuObj(
                         ),
                         MenuObj(
                             type= "menu",
+                            menuName="prefMenu",
                             label= "Preferences",
                             underline= 0,
                             subMenu=[
@@ -317,7 +318,7 @@ rootMenu = MenuObj(
                                             label="[Edit Menu Group]",
                                             background="#FFCC66",
                                             underline= 0,
-                                            command="lambda: MBM.EditCascade(root)"
+                                            command="lambda: print('Opening file...')"
                                         ),
                                         MenuObj(
                                             type= "command",
@@ -381,10 +382,181 @@ rootMenu = MenuObj(
             ]    
         )
     ]
-    
 )
 
-print(rootMenu.subMenu[0].subMenu[1].tags)
+#NOTE This version is the very basic version of the whole root menu of sketch.json
+# // I SHOULD BE ABLE TO POPULATE ALL THE OTHER FIELDS THROUGH THIS SCRIPT //
+# // This version is for testing my add and calculate commands, especially the unerline function. //
+rootMenuBasic = MenuObj(
+    type='menu',
+    menuName='root',
+    subMenu=[
+        MenuObj(
+            type='menu',
+            menuName='fileMenu',
+            label='File',
+            subMenu=[
+                MenuObj(
+                    type='menu',
+                    menuName='group',
+                    subMenu=[
+                        MenuObj( 
+                            type="command",
+                            label="[Edit Cascade]"),
+                        MenuObj(
+                            type="command",
+                            label="[Delete Cascade]")]),
+                MenuObj(
+                    type='menu',
+                    menuName='group2',
+                    subMenu=[
+                        MenuObj( 
+                            type="command",
+                            label="[Edit Menu Group]"),
+                        MenuObj(
+                            type= "command",
+                            label= "Open..."),
+                        MenuObj(
+                            type= "command",
+                            label= "Save As...")]),
+                MenuObj(
+                    type='menu',
+                    menuName='group3',
+                    subMenu=[
+                        MenuObj( 
+                            type="command",
+                            label="[Edit Menu Group]"),
+                        MenuObj(
+                            type= "command",
+                            label= "Auto Save"),
+                        MenuObj(
+                            type= "menu",
+                            menuName="prefMenu",
+                            label= "Preferences",
+                            subMenu=[
+                                MenuObj( 
+                                    type="menu",
+                                    menuName="subgroup",
+                                    subMenu=[
+                                        MenuObj( 
+                                            type="command",
+                                            label="[Edit Cascade]"),
+                                        MenuObj(
+                                            type="command",
+                                            label="[Delete Cascade]")]),
+                                MenuObj(
+                                    type="menu",
+                                    menuName="subgroup",
+                                    subMenu=[
+                                        MenuObj( 
+                                            type="command",
+                                            label="[Edit Menu Group]"),
+                                        MenuObj(
+                                            type= "command",
+                                            label= "Settings"),
+                                        MenuObj(
+                                            type= "command",
+                                            label= "Themes")]),
+                                MenuObj(
+                                    type="menu",
+                                    menuName="subgroup",
+                                    subMenu=[
+                                        MenuObj(
+                                            type="command",
+                                            label="[Add Group]")])])]),
+                MenuObj(
+                    type="menu",
+                    menuName="subgroup",
+                    subMenu=[
+                        MenuObj(
+                            type="command",
+                            label="[Add Group]")])]),
+        MenuObj(
+            type="menu",
+            menuName="addMenu",
+            label="+",
+            underline=0,
+            subMenu=[
+                MenuObj(
+                    type="command",
+                    label="[Add Cascade]")])])
+
+
+
+# OK, I want to a print of EVERY item in its heirarchy
+# output should look like this:
+"""
+        root
+            fileMenu - 'File'
+                M0G0
+                    'edit cascade'
+                    'delete cascade'
+                M0G1
+                    'edit menu group'
+                    'open'
+                    'save as'
+                M0G2
+                    'edit menu group'
+                    'auto save'
+                    PrefMenu - 'Preferences'
+                        M0S0G0
+                            'edit cascade'
+                            'delete cascade'
+                        M0S0G1
+                            'edit menu group'
+                            'settings'
+                            'themes'
+                        M0S0G2
+                            'add group'
+                M0G3
+                    'add group'
+            addMenu - '+'
+                M1G0
+                    'add cascade'
+"""  
+def print_menu_structure(menu_obj, level=0):
+    #NEed to refactor this to auto set the menu group IDs, and print a before and after. That'll give me a good test of my functions
+    indent = "  " * level
+    if menu_obj.menuName:
+        if menu_obj.get_tag('label'):
+            print(f"""{indent}{menu_obj.type}: {menu_obj.menuName} - '{menu_obj.get_tag('label')}'""")
+        else:
+            print(f"""{indent}{menu_obj.type}: {menu_obj.menuName}""")
+    else:
+        print(f"""{indent}{menu_obj.type}: {menu_obj.get_tag('label')}""")
+    for subMenu in menu_obj.subMenu:
+        print_menu_structure(subMenu, level + 1)
+    
+
+def convert_to_json(menu_obj):
+    #TODO now we need to actually convert this object to json for the live load loop
+    # NOTE also need a build mode that adds in the edit groups
+    # ACTUALLY, lets make the offical menuItem.py script, and make a backup copy of ALL OF THIS yeah lets do that
+    # we need to calculate underlines based on level in a group. Basically underlines only matter if they're in a group of groups, or a childless group.
+    # when there is a group, we need to pull its children out and make them direct children/siblings to the group/of the group's parents, after adding a separator, then kill the empty group.
+    # then we can write to file
+    pass
+
+
+# do I even want to work on this right now? I just wanna go home and not struggle iwth acid reflux. And maybe play video games.
+
+    
+rootMenu.subMenu[0].listSubMenuItems()
+
+
+print_menu_structure(rootMenuBasic)
+print('#################################################')
+print('#################################################')
+print('#################################################')
+print('#################################################')
+print('#################################################')
+rootMenuBasic.subMenu[0].moveSubMenuItemDown(0)
+rootMenuBasic.moveSubMenuItemDown(0)
+
+print_menu_structure(rootMenuBasic)
+
+
+
 
 if not crashed:
     cr='DID NOT CRASH! YAY!'
