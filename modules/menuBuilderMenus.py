@@ -7,7 +7,7 @@ class BaseMenu(ABC):
         pass
         
     def openWindow(self):
-        self.window = tk.Toplevel(self.root_menu)
+        self.window = tk.Toplevel(self.rootMenu)
         self.window.title(self.title)
         
     @abstractmethod    
@@ -18,11 +18,11 @@ class BaseMenu(ABC):
 class EditCascade(BaseMenu):
     def __init__(self, root):
         self.title = 'Edit Cascade'
-        self.root_menu = root
+        self.rootMenu = root
         super().openWindow()
         
-        text_label = tk.Label(self.window, text='test label')
-        text_label.pack()
+        textLabel = tk.Label(self.window, text='test label')
+        textLabel.pack()
 
     def closeWindow(self):
         self.window.destroy()
@@ -30,21 +30,21 @@ class EditCascade(BaseMenu):
 class SubmitWin(BaseMenu):
     def __init__(self, root):
         self.title = 'Test Submit Menu'
-        self.root_menu = root
+        self.rootMenu = root
         super().openWindow()
         
-        text_label = tk.Label(self.window, text='Enter text:')
-        text_label.pack()
+        textLabel = tk.Label(self.window, text='Enter text:')
+        textLabel.pack()
         
-        self.text_entry = tk.Entry(self.window)
-        self.text_entry.pack()
+        self.textEntry = tk.Entry(self.window)
+        self.textEntry.pack()
     
-        submit_button = tk.Button(self.window, text='Submit', command=self.closeWindow)
-        submit_button.pack()
+        submitButton = tk.Button(self.window, text='Submit', command=self.closeWindow)
+        submitButton.pack()
         
     def closeWindow(self):
-        text_input = self.text_entry.get()
-        print(text_input)
+        textInput = self.textEntry.get()
+        print(textInput)
         self.window.destroy()
 
 

@@ -6,3 +6,9 @@ currently_known_not_supported = frozenset({'font'})
 needs_functions_to_be_a_useful_tag = frozenset({'accelerator'})
 
 ALLOWED_KEYS = frozenset(TKINTER_ARGS | MY_KEYS)
+
+
+# WHY ARE YOU HERE
+def invalidKeyCheck(kwargs:dict) -> set:
+    invalidKeys = set(kwargs.keys()) - ALLOWED_KEYS
+    return invalidKeys

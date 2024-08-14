@@ -25,24 +25,24 @@ def addCommand():
 
 #can use a pop up with a radio button for what kind of object to add
 def addMenu():
-    new_window = tk.Toplevel(root)
-    new_window.title("New Menu Name?")
+    newWindow = tk.Toplevel(root)
+    newWindow.title("New Menu Name?")
     
-    def submit_text():
-        text_input = text_entry.get()
+    def submitText():
+        textInput = textEntry.get()
         #ADD CASCASE HERE
         #MMMMMMMMMMMMACTUALLY this SHOULD just affect the objects, and let the menubuilder
         # reprocess menu generation over and over again. 
-        print(text_input)
-        new_window.destroy()
+        print(textInput)
+        newWindow.destroy()
     
-    text_label = tk.Label(new_window, text='Enter text:')    
-    text_label.pack()
+    textLabel = tk.Label(newWindow, text='Enter text:')    
+    textLabel.pack()
     
-    text_entry = tk.Entry(new_window)
-    text_entry.pack()
+    textEntry = tk.Entry(newWindow)
+    textEntry.pack()
     
-    submit_button = tk.Button(new_window, text='letsdoit', command=submit_text)
+    submit_button = tk.Button(newWindow, text='letsdoit', command=submitText)
     submit_button.pack()
     
 WIN_TITLE = 'Test Script - MenuBar Generation Test 001'

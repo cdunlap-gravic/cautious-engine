@@ -1,5 +1,9 @@
+import os; print(f"cwd is: {os.getcwd()}")
+
+
 # Import(s)
-import modules.config.keytags as KT
+import modules.config.keytags as KT; print(KT.MY_KEYS)
+#from config import keytags as KT
 
 ###########################################################
 ####################################################################################################
@@ -23,8 +27,8 @@ class MenuItem:
         self.type = type
         
         #TODO: WWERE IS THIS COMING FROM??? invalid keys needs to be moved out
-        if invalid_keys(kwargs):
-            raise ValueError(f"""Invalid keys: {invalid_keys(kwargs)}""")
+        if KT.invalidKeyCheck(kwargs):
+            raise ValueError(f"""Invalid keys: {KT.invalidKeyCheck(kwargs)}""")
         
         self.tags = {k: v for k, v in kwargs.items() if k not in KT.MY_KEYS}
         self.menuName = kwargs.get('menuName', None)
@@ -44,8 +48,8 @@ class MenuItem:
     #######################################################################   
    
     def setTags(self, **kwargs:dict) -> None:
-        if invalid_keys(kwargs):
-            raise ValueError(f"""Invalid keys: {invalid_keys(kwargs)}""")
+        if KT.invalidKeyCheck(kwargs):
+            raise ValueError(f"""Invalid keys: {KT.invalidKeyCheck(kwargs)}""")
         self.tags = {k: v for k, v in kwargs.items() if k not in KT.MY_KEYS}
         
         
@@ -190,7 +194,3 @@ class MenuItem:
     
 
 
-# WHY ARE YOU HERE
-def invalid_keys(kwargs:dict) -> set:
-    invalid_keys = set(kwargs.keys()) - KT.ALLOWED_KEYS
-    return invalid_keys
