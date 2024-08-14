@@ -1,7 +1,7 @@
 import tkinter as tk
 from abc import ABC, abstractmethod
 
-
+#TODO move this to modules/objects/
 class BaseMenu(ABC):
     def __init__(self): 
         pass
