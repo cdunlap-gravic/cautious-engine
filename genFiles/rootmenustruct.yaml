@@ -1,0 +1,54 @@
+root
+label: root
+groups:
+    set1:
+        fileMenu
+            label: File
+            groups:
+                set1:
+                    open
+                        label: Open...
+                    openGB
+                        label: Open Gameboy...
+                    openGBC
+                        label: Open Gameboy Color...
+                    openRecent
+                        label: Open recent
+                        groups:
+                            set1:
+                                ...
+                            set2:
+                                ...
+                set2:
+                    loadState
+                        label: Load State
+                        groups:
+                            set1:
+                                ...
+                            set2:
+                                ...
+                    saveState
+                        label: Save State
+                        groups:
+                            set1:
+                                ...
+                            set2:
+                                ...
+                set3:
+                    Close
+                    Exit
+        otherMenu
+          label: other
+          groups:
+            set1:
+              ...
+            set2:
+              ...
+
+#Why does this LOOK LIKE MY JSON FILE?
+#because it fucking is. the structure is
+#that's fine tho. I only need to look at
+#the json general structure for the obj
+#relationships. I'm not building another
+#json file for this, just building objects
+#that map out the same structure. 

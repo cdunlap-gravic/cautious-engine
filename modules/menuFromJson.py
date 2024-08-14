@@ -2,21 +2,25 @@
 import json
 import tkinter as tk
 import sys
+import modules.menuBuilderMenus as MBM
 
 # Global Variables
 optArg = {}
+root = None # I don't know why I need to instantiate this here, but I do ¯\_(ツ)_/¯
 
 #####################################################################################################
 # Functions: 
 #####################################################################################################
 
-def loadMenuFromJson(filePath, parentMenu):
+def loadMenuFromJson(filePath, parentMenu, tkroot):
+    #global rooroo
     """
      Base function for loading a menu from a JSON file
         
      @param filePath - path to the JSON file
      @param parentMenu - menu to adhere any commmands or sub menus
     """
+    root = tkroot # Why the heck isn't this enough??
     with open(filePath) as file:
         data = json.load(file)
         for key, value in data.items():
@@ -26,6 +30,7 @@ def loadMenuFromJson(filePath, parentMenu):
 
 #######################################################################
 #######################################################################
+
 def recLoadMenuFromJson(dataList, parentMenu):
     """
      Recursive function for loading a menu from a JSON file to handle actual menu generation, and self terminate to root menu
@@ -38,6 +43,8 @@ def recLoadMenuFromJson(dataList, parentMenu):
      @param dataList - list object containing an array of commands and/or sub menus
      @param parentMenu - menu to adhere any commmands or sub menus. Key object for recursive functionality
     """
+    #global rooroo
+    #rooroo = roo
     for item in dataList:
         if isinstance(item, dict):
             for key, value in item.items():
