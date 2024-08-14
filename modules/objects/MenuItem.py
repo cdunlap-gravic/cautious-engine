@@ -1,10 +1,7 @@
-import os; print(f"cwd is: {os.getcwd()}")
-
-
 # Import(s)
-from modules.config import keytags; print(keytags.MY_KEYS)
-#from ..config import keytags; print(keytags.MY_KEYS)
-#from config import keytags as KT
+import sys #NOTE Whatever you do DON'T TRY TO FIX THIS BY SETTING THE IMPORT AS 'from modules.config import keytags as KT' IT JUST DOESN'T WORK
+sys.path.append('modules.') #ALSO only every run from root folder. I still need to figure out how to fix this, but it works this way for now...
+from config import keytags as KT
 
 ###########################################################
 ####################################################################################################
