@@ -2,7 +2,8 @@ import os; print(f"cwd is: {os.getcwd()}")
 
 
 # Import(s)
-import modules.config.keytags as KT; print(KT.MY_KEYS)
+from modules.config import keytags; print(keytags.MY_KEYS)
+f#rom ..config import keytags; print(keytags.MY_KEYS)
 #from config import keytags as KT
 
 ###########################################################
