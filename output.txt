@@ -1,0 +1,146 @@
+PS C:\Users\Cdunlap\workspace\cautious-engine\cautious-engine> & C:/Users/Cdunlap/AppData/Local/Programs/Python/Python312/python.exe c:/Users/Cdunlap/workspace/cautious-engine/cautious-engine/modules/objToJson.py
+{'type': 'menu', 'tags': {}, 'menuName': 'rootTest0', 'subMenu': [<objects.MenuItem.MenuItem object at 0x00000202254780E0>, <objects.MenuItem.MenuItem object at 0x0000020225478140>]}
+
+
+this should be it:
+menuName:rootTest0
+subMenu:[<objects.MenuItem.MenuItem object at 0x00000202254780E0>, <objects.MenuItem.MenuItem object at 0x0000020225478140>]
+tags:{}
+type:menu
+
+lets try this then????:
+'type': 'menu'
+'tags': '{}'
+'menuName': 'rootTest0'
+subMenu: [
+'type': 'menu'
+'tags': '{'label': 'File', 'underline': 0}'
+'menuName': 'fileMenu'
+subMenu: [
+'type': 'menu'
+'tags': '{}'
+'menuName': 'group'
+subMenu: [
+'type': 'command'
+'tags': '{'label': '[Edit Cascade]', 'background': '#FFCC66', 'underline': 0, 'command': 'lambda: MBM.EditCascade(root)'}'
+'menuName': 'None'
+subMenu: [
+]
+'type': 'command'
+'tags': '{'label': '[Delete Cascade]', 'background': '#FF6666', 'underline': 0, 'command': 'lambda: MBM.SubmitWin(root)'}'
+'menuName': 'None'
+subMenu: [
+]
+]
+'type': 'menu'
+'tags': '{}'
+'menuName': 'group2'
+subMenu: [
+'type': 'command'
+'tags': '{'label': '[Edit Menu Group]', 'background': '#FFCC66', 'underline': 0, 'command': "lambda: print('Opening file...')"}'
+'menuName': 'None'
+subMenu: [
+]
+'type': 'command'
+'tags': '{'label': 'Open...', 'underline': 0, 'command': "lambda: print('Opening file...')"}'
+'menuName': 'None'
+subMenu: [
+]
+'type': 'command'
+'tags': '{'label': 'Save As...', 'underline': 0, 'command': "lambda: print('Opening file...')"}'
+'menuName': 'None'
+subMenu: [
+]
+]
+'type': 'menu'
+'tags': '{}'
+'menuName': 'group3'
+subMenu: [
+'type': 'command'
+'tags': '{'label': '[Edit Menu Group]', 'background': '#FFCC66', 'underline': 0, 'command': 'lambda: MBM.EditCascade(root)'}'
+'menuName': 'None'
+subMenu: [
+]
+'type': 'command'
+'tags': '{'label': 'Auto Save', 'underline': 0, 'command': "lambda: print('Opening file...')"}'
+'menuName': 'None'
+subMenu: [
+]
+'type': 'menu'
+'tags': '{'label': 'Preferences', 'underline': 0}'
+'menuName': 'prefMenu'
+subMenu: [
+'type': 'menu'
+'tags': '{}'
+'menuName': 'subgroup'
+subMenu: [
+'type': 'command'
+'tags': '{'label': '[Edit Cascade]', 'background': '#FFCC66', 'underline': 0, 'command': 'lambda: MBM.EditCascade(root)'}'
+'menuName': 'None'
+subMenu: [
+]
+'type': 'command'
+'tags': '{'label': '[Delete Cascade]', 'background': '#FF6666', 'underline': 0, 'command': 'lambda: MBM.SubmitWin(root)'}'
+'menuName': 'None'
+subMenu: [
+]
+]
+'type': 'menu'
+'tags': '{}'
+'menuName': 'subgroup'
+subMenu: [
+'type': 'command'
+'tags': '{'label': '[Edit Menu Group]', 'background': '#FFCC66', 'underline': 0, 'command': "lambda: print('Opening file...')"}'
+'menuName': 'None'
+subMenu: [
+]
+'type': 'command'
+'tags': '{'label': 'Settings', 'underline': 0, 'command': "lambda: print('Opening file...')"}'
+'menuName': 'None'
+subMenu: [
+]
+'type': 'command'
+'tags': '{'label': 'Themes', 'underline': 0, 'command': "lambda: print('Opening file...')"}'
+'menuName': 'None'
+subMenu: [
+]
+]
+'type': 'menu'
+'tags': '{}'
+'menuName': 'subgroup'
+subMenu: [
+'type': 'command'
+'tags': '{'label': '[Add Group]', 'background': '#66ff66', 'underline': 0, 'command': "lambda: print('Opening file...')"}'
+'menuName': 'None'
+subMenu: [
+]
+]
+]
+]
+'type': 'menu'
+'tags': '{}'
+'menuName': 'subgroup'
+subMenu: [
+'type': 'command'
+'tags': '{'label': '[Add Group]', 'background': '#66ff66', 'underline': 0, 'command': "lambda: print('Opening file...')"}'
+'menuName': 'None'
+subMenu: [
+]
+]
+]
+'type': 'menu'
+'tags': '{'label': '+', 'underline': 0}'
+'menuName': 'addMenu'
+subMenu: [
+'type': 'command'
+'tags': '{'label': '[Add Cascade]', 'background': '#66ff66', 'underline': 0, 'command': "lambda: print('Opening file...')"}'
+'menuName': 'None'
+subMenu: [
+]
+]
+]
+goal output:   {'type': 'menu', 'menuName': 'root', 'subMenu': [{'type': 'menu', 'menuName': 'fileMenu', 'label': 'File', 'underline': 0, 'subMenu': [{'type': 'command', 'label': '[Edit Cascade]', 'background': '#FFCC66', 'underline': 0, 'command': 'lambda: MBM.EditCascade(root)'}, {'type': 'command', 'label': '[Delete Cascade]', 'background': '#FF6666', 'underline': 0, 'command': 'lambda: MBM.SubmitWin(root)'}, 
+{'type': 'separator', 'label': ''}, {'type': 'command', 'label': '[Edit Menu Group]', 'background': '#FFCC66', 'underline': 0, 'command': "lambda: print('Opening file...')"}, {'type': 'command', 'label': 'Open...', 'underline': 0, 'command': "lambda: print('Opening file...')"}, {'type': 'command', 'label': 'Save As...', 'underline': 0, 'command': "lambda: print('Opening file...')"}, {'type': 'separator', 'label': ''}, {'type': 'command', 'label': '[Edit Menu Group]', 'background': '#FFCC66', 'underline': 0, 'command': "lambda: print('Opening file...')"}, {'type': 'command', 'label': 'Auto Save', 'underline': 0, 'command': "lambda: print('Opening file...')"}, {'type': 'menu', 'menuName': 'prefMenu', 'label': 'Preferences', 'underline': 0, 'subMenu': [{'type': 'command', 'label': '[Edit Cascade]', 'background': '#FFCC66', 
+'underline': 0, 'command': "lambda: print('Opening file...')"}, {'type': 'command', 'label': '[Delete Cascade]', 'background': '#FF6666', 'underline': 0, 'command': "lambda: print('Opening file...')"}, {'type': 'separator', 'label': ''}, {'type': 'command', 'label': '[Edit Menu Group]', 'background': '#FFCC66', 'underline': 0, 'command': "lambda: print('Opening file...')"}, {'type': 'command', 'label': 'Settings', 'underline': 0, 'command': "lambda: print('Opening file...')"}, {'type': 'command', 'label': 'Themes', 'underline': 0, 'command': "lambda: print('Opening file...')"}, {'type': 'separator', 'label': ''}, {'type': 'command', 'label': '[Add Group]', 'background': '#66ff66', 'underline': 0, 'command': "lambda: print('Opening file...')"}]}, {'type': 'separator', 'label': ''}, {'type': 'command', 'label': '[Add Group]', 'background': '#66ff66', 'underline': 0, 'command': "lambda: print('Opening file...')"}]}, {'type': 'menu', 'menuName': 'addMenu', 'label': '+', 'underline': 0, 'subMenu': [{'type': 'command', 'label': '[Add Cascade]', 'background': '#66ff66', 'underline': 0, 'command': "lambda: print('Opening file...')"}]}]}
+
+actual output: {"type": "menu"}
