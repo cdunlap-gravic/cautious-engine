@@ -16,14 +16,22 @@ testmode = True
 ###############################################################
 
 
-def printoutItems(mi):
+def printoutItems(mi, l=0):
     for n, v in vars(mi).items():
-        if isinstance(v, list):
-            print("subMenu: [")
+        if isinstance(v, list)and len(v)>0:
+            for _ in range (l):
+                print("    ",end="")
+            print(f"subMenu: [")
             for i in v:
-                printoutItems(i)
-            print(']')
+                printoutItems(i,l+1)
+            for _ in range (l):
+                print("    ",end="")
+            print(f']')
         else:
+            for _ in range (l):
+                print("    ",end="")
+            # if statement or tags, these need to be parsed
+            
             print(f"'{n}': '{v}'")
     return
 
