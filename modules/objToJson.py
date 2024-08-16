@@ -49,28 +49,105 @@ testmode = True
 #
 #
 #
+# Now when and where do I add commas though???????????
 #
 #
-#
-indent="    "
 
+#lets try this YET A-FUCKING-GAIN
+# yeah this shit didn't work
+def toJson(mi):
+    if isinstance(mi, dict):
+        items =[f"{k}:{toJson(v)}" for k, v in mi.items()]
+        return ", ".join(items)
+    elif isinstance(mi, list):
+        items = [toJson(i) for i in mi]
+        return ", ".join(items)
+    else:
+        return repr(mi)
 
-def printoutItems(mi, l=0):
+def printJson(mi):
+    return(f"{{{toJson(mi)}}}")
+
+# the fuck is going on? I need to take a break. Let's just go home.
+#
+#######################################################################################
+#                                                                                     #
+#                      (if you even want to call this shit working)                   #
+#                                                                                     #
+#                                  WORKING HERE:                                      #
+#                                      |  |                                           #
+#                                     |  |                                            #
+#                                   _|  |_                                            #
+#                                  \     /                                            #
+#                                   \  /                                              #
+#                                   \/                                                #
+#                                                                                     #
+#######################################################################################
+
+def letsgo(mi):
     for n, v in vars(mi).items(): 
-        if isinstance(v, list) and len(v)>0: 
-            print(f"{indent * l}'subMenu': [")
-            for i in v:
-                printoutItems(i,l+1) 
-            print(f"{indent * (l)}]")
-        elif isinstance(v, dict) and n=='tags':
+        if isinstance(v, dict) and n=='tags':
             for kk, vv in v.items():
                 if isinstance(vv, int):
-                    print(f"{indent * l}'{kk}':{vv}") 
+                    print(f"{indent * l}'{kk}':{vv}",end='')
                 else:
-                    print(f"{indent * l}'{kk}':'{vv}'")
+                    print(f"{indent * l}'{kk}':'{vv}'",end='')
+                ln(text=',') # NOTE HERE
+        elif isinstance(v, list) and len(v)>0: 
+            print(f"{indent * l}'subMenu': [")
+            for i in v:
+                printoutItems(i,l+1)
+            print(f"{indent * (l)}]")
         elif v != None and v != []:
-            print(f"{indent * l}'{n}':'{v}'")
+            print(f"{indent * l}'{n}':'{v}'",end='')
+            ln(text=',')# NOTE HERE
+    l-=1
+    print(f"""{indent*l}}}""",end='')
+    ln(text=',')# NOTE HERE
+
+
+
+##################################################################
+##################################################################
+##################################################################
+##################################################################
+##################################################################
+##################################################################
+##################################################################
+##################################################################
+##################################################################
+indent="    "
+def printoutItems(mi, l=0):
+    print(f"""{indent*l}{{""")
+    l+=1
+    for n, v in vars(mi).items(): 
+        if isinstance(v, dict) and n=='tags':
+            for kk, vv in v.items():
+                if isinstance(vv, int):
+                    print(f"{indent * l}'{kk}':{vv}",end='')
+                else:
+                    print(f"{indent * l}'{kk}':'{vv}'",end='')
+                ln(text=',') # NOTE HERE
+        elif isinstance(v, list) and len(v)>0: 
+            print(f"{indent * l}'subMenu': [")
+            for i in v:
+                printoutItems(i,l+1)
+            print(f"{indent * (l)}]")
+        elif v != None and v != []:
+            print(f"{indent * l}'{n}':'{v}'",end='')
+            ln(text=',')# NOTE HERE
+    l-=1
+    print(f"""{indent*l}}}""",end='')
+    ln(text=',')# NOTE HERE
             
+##################################################################
+##################################################################
+##################################################################
+##################################################################
+##################################################################
+##################################################################
+##################################################################
+##################################################################
             
             
             
@@ -175,10 +252,14 @@ def main():
         ln(1,"lets try this then????:")
         printoutItems(testsub)
     ln(3)
-    rootTest = json.dumps(MItoJson(testsub))
+    rootTest = json.dumps(printJson(rootTest0))
     print(f"goal output:   {testDict}\n")
     ln(3)
     print(f"actual output: {rootTest}\n")
+    print('what the hell is this even doing??????')
+    print(vars(toJson(rootTest0)))
+    print(printJson(rootTest0).items())
+    # THE FUCK IS THIS OBJECT????????????????
     
     
 """
