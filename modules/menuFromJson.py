@@ -12,7 +12,7 @@ root = None # I don't know why I need to instantiate this here, but I do Â¯\_(ãƒ
 # Functions: 
 #####################################################################################################
 
-def loadMenuFromJson(filePath, parentMenu, tkroot):
+def loadMenuFromJsonFile(filePath, parentMenu, tkroot):
     #global rooroo
     """
      Base function for loading a menu from a JSON file
@@ -28,6 +28,18 @@ def loadMenuFromJson(filePath, parentMenu, tkroot):
                 recLoadMenuFromJson(value, parentMenu)
 
 
+
+#######################################################################
+#######################################################################
+
+def loadMenuFromJsonObj(jsonObj, parentMenu, tkroot):
+    root = tkroot
+    data = jsonObj
+    for key, value in data.items():
+        if key == "subMenu":
+            recLoadMenuFromJson(value, parentMenu)
+            
+            
 #######################################################################
 #######################################################################
 

@@ -12,6 +12,13 @@ testsub = rootTest0
 
 # still need to parse out groups and insert separators
 def ParseOutGroups(mi):
+    # ok, so how are we gonna do this?
+    # 
+    # whenever there is a group (and not the first) add a separator at the top. (actually, groups are helpful for menu builder... maybe I should just process it in menufromjson instead??? actually lets test this first conversion)
+    # 
+    # 
+    # 
+    # 
     pass
 
 

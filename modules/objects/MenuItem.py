@@ -127,6 +127,7 @@ class MenuItem:
     
     def insertSubMenuItem(self, item: "MenuItem", index: int):
         #inserts item into submenu as position (was menuGroup)
+        self.subMenu.insert(index, item)
         pass
 
 
@@ -156,6 +157,15 @@ class MenuItem:
     
     
     #######################################################################
+    #######################################################################
+    
+    def addSeparator(self, pos):
+        sep = MenuItem(type='separator', label='')
+        self.insertSubMenuItem(sep, pos)
+        #self.addSubMenuItem(sep, True)
+    
+         
+    #######################################################################     
     #######################################################################     
 
     def findMenuItem():
