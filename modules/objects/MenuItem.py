@@ -164,6 +164,24 @@ class MenuItem:
         self.insertSubMenuItem(sep, pos)
         #self.addSubMenuItem(sep, True)
     
+    def addSeparatorAtEnd(self):
+        sep = MenuItem(type='separator',label='')
+        self.addSubMenuItem(sep)
+         
+    #######################################################################     
+    #######################################################################
+    
+    # THIS FUNCTION DOES WORK, but is it being used in the right spot????
+    # Also, I do need to rework this and the previous functions to work
+    # together in a way that recursively adds all the separators neede
+    def parentalPurge(self, p):
+        for c in p.subMenu:
+            self.addSubMenuItem(c)
+        self.dropSubMenuItem(p)    
+        self.addSeparatorAtEnd()
+        
+    
+    
          
     #######################################################################     
     #######################################################################     

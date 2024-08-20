@@ -21,7 +21,14 @@ WIN_SIZE = (800, 600)
 
 editedtestsub = testsub
 # IT:S HARDCODED BUTTTTT IT DOES WORK!!!!!!!!!
-editedtestsub.subMenu[0].subMenu[0].addSeparator(1)
+editedtestsub.subMenu[0].parentalPurge(editedtestsub.subMenu[0].subMenu[0])
+editedtestsub.subMenu[0].parentalPurge(editedtestsub.subMenu[0].subMenu[0])
+editedtestsub.subMenu[0].parentalPurge(editedtestsub.subMenu[0].subMenu[0])
+editedtestsub.subMenu[0].parentalPurge(editedtestsub.subMenu[0].subMenu[0])
+editedtestsub.subMenu[0].subMenu[9].parentalPurge(editedtestsub.subMenu[0].subMenu[9].subMenu[0])
+editedtestsub.subMenu[0].subMenu[9].parentalPurge(editedtestsub.subMenu[0].subMenu[9].subMenu[0])
+editedtestsub.subMenu[0].subMenu[9].parentalPurge(editedtestsub.subMenu[0].subMenu[9].subMenu[0])
+
 #print(editedtestsub.subMenu[0].subMenu[0].subMenu[0].getTag('label'))
 jsonFile = ObjToJson(editedtestsub)
 root = ThemedTk(theme='black')
