@@ -23,7 +23,7 @@ editedtestsub = testsub
 # IT:S HARDCODED BUTTTTT IT DOES WORK!!!!!!!!!
 
 # THIS HSOULD NOT BE HARDCODED: instead it should look like this:
-ParseOutGroups(editedtestsub)
+ParseOutGroupsFromRoot(editedtestsub)
 #editedtestsub.subMenu[0].parentalPurge(editedtestsub.subMenu[0].subMenu[0])
 #editedtestsub.subMenu[0].parentalPurge(editedtestsub.subMenu[0].subMenu[0])
 #editedtestsub.subMenu[0].parentalPurge(editedtestsub.subMenu[0].subMenu[0])

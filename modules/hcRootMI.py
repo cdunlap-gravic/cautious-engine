@@ -1,5 +1,29 @@
 from objects.MenuItem import *
 
+rootTest2 = MenuItem(
+    type='menu',
+    menuName='rootTest2',
+    subMenu=[
+        MenuItem(
+            type='menu',
+            menuName='fileMenu',
+            label='File',
+            subMenu=[
+                MenuItem(
+                    type='menu',
+                    menuName='group',
+                    subMenu=[
+                        MenuItem(
+                            type='menu'
+                        )
+                    ]
+                )
+            ]
+        )
+    ]
+)
+
+
 
 rootTest0 = MenuItem(
     type='menu',
@@ -420,3 +444,176 @@ testDict = {
         }
     ]
 }
+
+rootTest3 = MenuItem(
+    type='menu',
+    menuName='rootTest3',
+    subMenu=[
+        MenuItem(
+            type='menu',
+            menuName='fileMenu',
+            label='File',
+            underline=0,
+            subMenu=[
+                MenuItem(
+                    type='group',
+                    menuName='group',
+                    subMenu=[
+                        MenuItem( 
+                            type="command",
+                            label="[Edit Cascade]",
+                            background="#FFCC66",
+                            underline= 0,
+                            command="lambda: MBM.EditCascade(root)"
+                        ),
+                        MenuItem(
+                            type="command",
+                            label="[Delete Cascade]",
+                            background="#FF6666",
+                            underline=0,
+                            command="lambda: MBM.SubmitWin(root)"
+                        )       
+                    ]
+                ),
+                MenuItem(
+                    type='group',
+                    menuName='group2',
+                    subMenu=[
+                        MenuItem( 
+                            type="command",
+                            label="[Edit Menu Group]",
+                            background="#FFCC66",
+                            underline= 0,
+                            command="lambda: print('Opening file...')"
+                        ),
+                        MenuItem(
+                            type= "command",
+                            label= "Open...",
+                            underline= 0,
+                            command= "lambda: print('Opening file...')"
+                        ),
+                        MenuItem(
+                            type= "command",
+                            label= "Save As...",
+                            underline= 0,
+                            command= "lambda: print('Opening file...')"
+                        )          
+                    ]
+                ),
+                MenuItem(
+                    type='group',
+                    menuName='group3',
+                    subMenu=[
+                        MenuItem( 
+                            type="command",
+                            label="[Edit Menu Group]",
+                            background="#FFCC66",
+                            underline= 0,
+                            command="lambda: MBM.EditCascade(root)"
+                        ),
+                        MenuItem(
+                            type= "command",
+                            label= "Auto Save",
+                            underline= 0,
+                            command= "lambda: print('Opening file...')"
+                        ),
+                        MenuItem(
+                            type= "menu",
+                            menuName="prefMenu",
+                            label= "Preferences",
+                            underline= 0,
+                            subMenu=[
+                                MenuItem( 
+                                    type="group",
+                                    menuName="subgroup",
+                                    subMenu=[
+                                        MenuItem( 
+                                            type="command",
+                                            label="[Edit Cascade]",
+                                            background="#FFCC66",
+                                            underline= 0,
+                                            command="lambda: MBM.EditCascade(root)"
+                                        ),
+                                        MenuItem(
+                                            type="command",
+                                            label="[Delete Cascade]",
+                                            background="#FF6666",
+                                            underline=0,
+                                            command="lambda: MBM.SubmitWin(root)"
+                                        )
+                                    ]
+                                ),
+                                MenuItem(
+                                    type="group",
+                                    menuName="subgroup",
+                                    subMenu=[
+                                        MenuItem( 
+                                            type="command",
+                                            label="[Edit Menu Group]",
+                                            background="#FFCC66",
+                                            underline= 0,
+                                            command="lambda: print('Opening file...')"
+                                        ),
+                                        MenuItem(
+                                            type= "command",
+                                            label= "Settings",
+                                            underline= 0,
+                                            command= "lambda: print('Opening file...')"
+                                        ),
+                                        MenuItem(
+                                            type= "command",
+                                            label= "Themes",
+                                            underline= 0,
+                                            command= "lambda: print('Opening file...')"
+                                        )
+                                    ]
+                                ),
+                                MenuItem(
+                                    type="group",
+                                    menuName="subgroup",
+                                    subMenu=[
+                                        MenuItem(
+                                            type="command",
+                                            label="[Add Group]",
+                                            background="#66ff66",
+                                            underline= 0,
+                                            command="lambda: print('Opening file...')"
+                                        )
+                                    ]
+                                )          
+                            ]
+                        )          
+                    ]
+                ),
+                MenuItem(
+                    type="group",
+                    menuName="subgroup",
+                    subMenu=[
+                        MenuItem(
+                            type="command",
+                            label="[Add Group]",
+                            background="#66ff66",
+                            underline= 0,
+                            command="lambda: print('Opening file...')"
+                        )
+                    ]
+                )
+            ]
+        ),
+        MenuItem(
+            type="menu",
+            menuName="addMenu",
+            label="+",
+            underline=0,
+            subMenu=[
+                MenuItem(
+                    type="command",
+                    label="[Add Cascade]",
+                    background="#66ff66",
+                    underline= 0,
+                    command="lambda: print('Opening file...')"
+                )
+            ]    
+        )
+    ]
+)

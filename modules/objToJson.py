@@ -5,21 +5,22 @@ from utils import *
 from hcRootMI import *
 import inspect
 
-testsub = rootTest0
+testsub = rootTest3
 
 # FROM THAT HARDCODE TEST ----> autoprocess underlines and separators (key thing for this stage is at least the separators)
 ##################################################################
 
 # still need to parse out groups and insert separators
 ## SUCK IT! We'll just handle root separately, and the rest can be recursive after
+# * SO IN HERE, I NEED TO MAKE SURE IT RECURSEIVELY RUNS PARSE OUT GROUPS ON EACH CHILD, AND IN HERE I COULD PROBABLY RUN PARSE UNDERLINES
 def ParseOutGroupsFromRoot(root):
-    ln(2, f"""Begin Processing of groups under '{root.MenuName}':""")
+    ln(2, f"""Begin Processing of groups under '{root.menuName}':""")
     for header in root.subMenu:
         ParseOutGroups(header)
         ln(0, '')
     ln(1, f"""Parsing all groups under '{root.menuName}': Done!""")    
     
-        
+
 def ParseOutGroups(mi): #or, def degroupify(mi):
     # ok, so how are we gonna do this?
     # 
@@ -37,9 +38,11 @@ def ParseOutGroups(mi): #or, def degroupify(mi):
             for grandchild in child.subMenu:
                 mi.insertSubMenuItem(grandchild, mi.subMenu.index(child) + order)
                 order+=1
-            if mi.subMenu.index(child) != len(mi.subMenu):
-                mi.subMenu.addSeparator(mi.subMenu.index(child)+order)
-            mi.subMenu.dropSubMenuItem(child)
+            if mi.subMenu.index(child) != len(mi.subMenu)-1:
+                mi.addSeparator(mi.subMenu.index(child)+order)
+            mi.dropSubMenuItem(child)
+        if child.type == 'menu' or 'group':
+            ParseOutGroups(child)
                 
                 
 """

@@ -22,6 +22,6 @@ CascAdd = MenuItem(type='command', label='[Add Cascade]', background=COL_GRN, co
 GroupAdd =  MenuItem(type='command', label='[Add Group]', background=COL_GRN, command='lambda: MBM.EditCascade(root)')
 
 # Prefab Menu Groups
-CascEditGrp = MenuItem(type='menu', menuName='CascEditGroup', subMenu=[CascEdit, CascDelete])
-CascAddGrp = MenuItem(type='menu', menuName='CascAddGroup', subMenu=CascAdd)
-GroupAddGrp = MenuItem(type='menu', menuName='GroupAddGroup', subMenu=GroupAdd)
+CascEditGrp = MenuItem(type='group', menuName='CascEditGroup', subMenu=[CascEdit, CascDelete])
+CascAddGrp = MenuItem(type='group', menuName='CascAddGroup', subMenu=CascAdd)
+GroupAddGrp = MenuItem(type='group', menuName='GroupAddGroup', subMenu=GroupAdd)

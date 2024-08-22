@@ -65,7 +65,7 @@ def recLoadMenuFromJson(dataList, parentMenu):
                 elif key == "menuName":
                     subMenu = tk.Menu(parentMenu, tearoff=0)
                 elif isinstance(value, list): 
-                    if dictType == "menu":
+                    if dictType == "menu" or "group":
                         parentMenu.add_cascade(**optArg, menu = subMenu)
                         optArg.clear()
                         recLoadMenuFromJson(value, subMenu)
