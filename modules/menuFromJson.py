@@ -28,7 +28,6 @@ def loadMenuFromJsonFile(filePath, parentMenu, tkroot):
                 recLoadMenuFromJson(value, parentMenu)
 
 
-
 #######################################################################
 #######################################################################
 
